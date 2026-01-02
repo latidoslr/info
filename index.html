@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regalos y Sorpresas</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #fff6c8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER FIJO */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #ffd84d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+header img {
+    height: 50px;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+header button {
+    padding: 8px 15px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+section {
+    padding: 100px 30px 60px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* INICIO */
+#inicio {
+    text-align: center;
+}
+
+#inicio h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+#inicio p {
+    font-size: 18px;
+}
+
+/* SLIDER PERSONAJES */
+.slider {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slider img.active {
+    display: block;
+    opacity: 1;
+}
+
+/* SECCIONES */
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* CONTACTOS */
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.socials a {
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.whatsapp a {
+    background: #25D366;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 18px;
+    text-decoration: none;
+    display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="Logo">
+    <h1>NOMBRE DEL EQUIPO</h1>
+    <button onclick="scrollToTop()">Inicio</button>
+</header>
+
+<section id="inicio">
+    <h2>Regalos y Sorpresas que emocionan</h2>
+    <p>Transformamos momentos especiales en recuerdos inolvidables.</p>
+</section>
+
+<section>
+    <h3>Personajes Disponibles</h3>
+    <div class="slider">
+        <img src="personaje1.jpg" class="active">
+        <img src="personaje2.jpg">
+        <img src="personaje3.jpg">
+    </div>
+</section>
+
+<section>
+    <h3>Acerca de Nosotros</h3>
+    <div class="box">
+        <p>
+            Somos un equipo dedicado a llevar alegría, emoción y sorpresas
+            personalizadas a cada hogar. Creamos experiencias únicas para
+            cumpleaños, aniversarios y fechas especiales.
+        </p>
+    </div>
+</section>
+
+<section>
+    <h3>Regalos</h3>
+    <div class="box">
+        <p>
+            Ofrecemos regalos personalizados, detalles especiales y
+            presentaciones creativas adaptadas a cada cliente.
+        </p>
+    </div>
+</section>
+
+<section>
+    <h3>Experiencias</h3>
+    <div class="box">
+        <p>
+            Cada entrega es una experiencia cargada de emociones,
+            sorpresas y alegría compartida.
+        </p>
+    </div>
+</section>
+
+<section>
+    <h3>Contactos</h3>
+    <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Telegram</a>
+    </div>
+
+    <div class="whatsapp">
+        <p>Gracias por confiar en nosotros. Será un placer atenderle.</p>
+        <br>
+        <a href="https://wa.me/535XXXXXXXX?text=ESTOY%20INTERESADO(A)%20EN%20SUS%20SERVICIOS">
+            ME INTERESA
+        </a>
+    </div>
+</section>
+
+<script>
+let slides = document.querySelectorAll(".slider img");
+let index = 0;
+
+setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}, 5000);
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
