@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
 }
 
 body{
@@ -32,9 +32,7 @@ header{
     box-shadow:0 3px 10px rgba(0,0,0,.4);
 }
 
-header img{
-    height:48px;
-}
+header img{height:48px;}
 
 header button{
     background:#000;
@@ -72,6 +70,19 @@ h2{
     padding:25px;
     border-radius:12px;
     box-shadow:0 5px 20px rgba(255,212,0,.15);
+    text-align:center;
+}
+
+/* BOTONES VER MÁS */
+.more-btn{
+    margin-top:20px;
+    display:inline-block;
+    background:#FFD400;
+    color:#000;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 /* SLIDER */
@@ -92,46 +103,61 @@ h2{
     transition:opacity 1.2s ease;
 }
 
-.slider img.active{
-    opacity:1;
+.slider img.active{opacity:1;}
+
+/* BOTÓN WHATSAPP FLOTANTE */
+.whatsapp-float{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    color:#fff;
+    padding:14px 18px;
+    border-radius:50%;
+    font-size:22px;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    z-index:2000;
 }
 
-/* FOOTER */
-footer{
-    background:#000;
-    text-align:center;
-    padding:60px 20px 40px;
+/* FINAL CON LUZ */
+.final{
     position:relative;
+    text-align:center;
+    padding:80px 20px 100px;
+    background:#000;
 }
 
-footer::before{
+.final::before{
     content:"";
     position:absolute;
     top:0;
     left:0;
     width:100%;
-    height:80px;
-    background:radial-gradient(circle, rgba(255,212,0,.35), transparent);
+    height:100%;
+    background:radial-gradient(circle, rgba(255,212,0,.45), transparent 70%);
+    z-index:0;
 }
 
-.socials{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-bottom:25px;
+.final-content{
+    position:relative;
+    z-index:1;
 }
 
-.socials a{
-    background:#FFD400;
-    color:#000;
-    padding:12px 18px;
-    border-radius:8px;
+.final a{
+    display:inline-block;
+    margin-top:25px;
+    background:#25D366;
+    color:#fff;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:18px;
     text-decoration:none;
-    font-weight:bold;
 }
 
-footer p{
-    margin:5px 0;
+/* FOOTER INFO */
+.footer-info{
+    margin-top:40px;
     font-size:15px;
 }
 
@@ -169,61 +195,70 @@ footer p{
 <section>
     <h2>Acerca de Nosotros</h2>
     <div class="box">
-        Somos un equipo profesional dedicado a llevar alegría, emoción y recuerdos
-        inolvidables directamente a los hogares.
+        Somos un equipo profesional dedicado a llevar alegría y emoción
+        directamente a los hogares.
     </div>
 </section>
 
 <section>
     <h2>Regalos</h2>
     <div class="box">
-        Regalos personalizados, detalles especiales y presentaciones creativas
-        adaptadas a cada cliente.
+        Regalos personalizados, detalles especiales y presentaciones creativas.
+        <br>
+        <a class="more-btn" href="https://tusitio-regalos.com">Ver más</a>
     </div>
 </section>
 
 <section>
     <h2>Experiencias</h2>
     <div class="box">
-        Cada entrega está diseñada para crear impacto emocional y momentos únicos.
+        Momentos diseñados para impactar emocionalmente y sorprender.
+        <br>
+        <a class="more-btn" href="https://tusitio-experiencias.com">Ver más</a>
     </div>
 </section>
 
-<footer>
-    <div class="socials">
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-        <a href="#">Instagram</a>
-    </div>
+<div class="final">
+    <div class="final-content">
+        <p>Gracias por confiar en nosotros. Será un placer atenderle.</p>
+        <a href="https://wa.me/535XXXXXXXX?text=ESTOY%20INTERESADO(A)%20EN%20SUS%20SERVICIOS">
+            ME INTERESA
+        </a>
 
-    <p>📍 Dirección: AQUÍ VA TU DIRECCIÓN</p>
-    <p>📞 Teléfonos: +53 XXXXXXXX / +53 XXXXXXXX</p>
-</footer>
+        <div class="footer-info">
+            <p>📍 Dirección: AQUÍ TU DIRECCIÓN</p>
+            <p>📞 Teléfonos: +53 XXXXXXXX / +53 XXXXXXXX</p>
+        </div>
+    </div>
+</div>
+
+<a class="whatsapp-float" 
+href="https://wa.me/535XXXXXXXX?text=ESTOY%20INTERESADO(A)%20EN%20SUS%20SERVICIOS">
+💬
+</a>
 
 <script>
 /* SLIDER */
-let slides = document.querySelectorAll(".slider img");
-let index = 0;
-
+let slides=document.querySelectorAll(".slider img");
+let index=0;
 setInterval(()=>{
     slides[index].classList.remove("active");
-    index = (index+1)%slides.length;
+    index=(index+1)%slides.length;
     slides[index].classList.add("active");
 },5000);
 
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
+/* ANIMACIONES SCROLL */
+const sections=document.querySelectorAll("section");
 window.addEventListener("scroll",()=>{
     sections.forEach(sec=>{
-        const top = sec.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
+        if(sec.getBoundingClientRect().top < window.innerHeight - 100){
             sec.classList.add("visible");
         }
     });
 });
 
 function scrollToTop(){
-    window.scrollTo({top:0, behavior:"smooth"});
+    window.scrollTo({top:0,behavior:"smooth"});
 }
 </script>
 
