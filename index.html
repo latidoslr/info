@@ -5,190 +5,347 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Latidos ¨ENTRE LÁGRIMAS Y RISAS¨</title>
 
-<!-- FAVICON -->
+<!-- AGREGADO: FAVICON -->
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif;}
-body{background:#EEDBDB;color:#2b2121;overflow-x:hidden}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+body{
+    background:#EEDBDB;
+    color:#2b2121;
+}
+
+/* ===== FONDO ANIMADO REGALOS ===== */
+#gift-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    transition:opacity .6s ease;
+}
+
+.gift{
+    position:absolute;
+    top:-120px;
+    opacity:0;
+    animation:fall linear forwards;
+    will-change:transform,opacity;
+}
+
+/* AGREGADO: CONFETI */
+.confetti{
+    position:absolute;
+    top:-40px;
+    opacity:0;
+    animation:fall linear forwards;
+    border-radius:3px;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(0) rotate(var(--rs));
+        opacity:1;
+    }
+    50%{opacity:.7}
+    70%{opacity:.3}
+    100%{
+        transform:translateY(50vh) rotate(var(--re));
+        opacity:0;
+    }
+}
 
 /* HEADER */
 header{
-position:fixed;top:0;width:100%;background:#DEE3EEFA;
-display:flex;justify-content:space-between;align-items:center;
-padding:10px 25px;z-index:1000;
-box-shadow:0 3px 10px rgba(0,0,0,.45)
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#DEE3EEFA;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 25px;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0, 0, 0, 0.45);
 }
-header img{height:48px}
+
+header img{height:48px;}
+
 header button{
-background:#000;color:#fff;border:none;
-padding:8px 15px;border-radius:6px;cursor:pointer
+    background:#000;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 /* SECCIONES */
 section{
-max-width:1100px;margin:auto;
-padding:120px 25px 80px;
-opacity:0;transform:translateY(40px);
-transition:all .8s ease
+    max-width:1100px;
+    margin:auto;
+    padding:120px 25px 80px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s ease;
 }
-section.visible{opacity:1;transform:none}
 
-h2{text-align:center;margin-bottom:25px;font-size:30px}
+section.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:30px;
+}
 
 .box{
-background:#ac9c9c;padding:25px;border-radius:12px;
-box-shadow:0 5px 20px rgba(55,55,54,.68);
-text-align:center
+    background:#ac9c9c;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(55, 55, 54, 0.68);
+    text-align:center;
 }
 
-.hero-img{max-width:790px;margin:0 auto 25px}
-.hero-img img{width:100%;border-radius:14px}
+/* IMAGEN INICIO */
+.hero-img{
+    max-width:790px;
+    margin:0 auto 25px;
+}
 
+.hero-img img{
+    width:100%;
+    border-radius:14px;
+}
+
+/* BOTONES */
 .more-btn{
-margin-top:20px;display:inline-block;
-background:#fff;color:#3a2f2f;
-padding:10px 20px;border-radius:8px;
-text-decoration:none;font-weight:bold
+    margin-top:20px;
+    display:inline-block;
+    background:#FFF;
+    color:#3a2f2f;
+    padding:10px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 /* SLIDER */
-.slider{max-width:600px;margin:30px auto;height:900px;position:relative}
-.slider img{
-position:absolute;width:100%;height:100%;
-object-fit:cover;border-radius:12px;
-opacity:0;transition:opacity 1.2s ease
+.slider{
+    position:relative;
+    max-width:600px;
+    margin:30px auto 0;
+    height:900px;
 }
-.slider img.active{opacity:1}
+
+.slider img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
+    opacity:0;
+    transition:opacity 1.2s ease;
+}
+
+.slider img.active{opacity:1;}
 
 /* WHATSAPP */
 .whatsapp-float{
-position:fixed;bottom:25px;right:25px;
-background:#25D366;color:#fff;
-padding:14px 18px;border-radius:50%;
-font-size:22px;text-decoration:none;
-z-index:2000
-}
-
-/* REGALO FLOTANTE */
-#floating-gift{
-position:fixed;width:70px;cursor:pointer;
-z-index:3000;transition:transform .3s
-}
-
-/* MODAL */
-#modal{
-position:fixed;inset:0;
-background:rgba(0,0,0,.6);
-display:none;align-items:center;justify-content:center;
-z-index:4000
-}
-#modal .paper{
-background:#fff;padding:30px;
-border-radius:12px;max-width:420px;
-box-shadow:0 10px 30px rgba(0,0,0,.5);
-text-align:center
-}
-#modal button{
-margin-top:20px;padding:10px 20px;
-border:none;border-radius:8px;
-background:#000;color:#fff;cursor:pointer
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    color:#fff;
+    padding:14px 18px;
+    border-radius:50%;
+    font-size:22px;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+    z-index:2000;
 }
 
 /* FINAL */
 .final{
-text-align:center;padding:80px 20px;
-background:#eedbdb
+    position:relative;
+    text-align:center;
+    padding:70px 20px 90px;
+    background:#eedbdb;
 }
+
+.final::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:750px;
+    background:linear-gradient(to bottom, rgba(238,219,219,0), #d78dba);
+}
+
+.final-content{position:relative;z-index:1;}
 </style>
 </head>
 
 <body>
 
+<!-- FONDO ANIMADO -->
+<div id="gift-container"></div>
+
 <header>
-<img src="logo.png">
-<button onclick="scrollTo({top:0,behavior:'smooth'})">Inicio</button>
+    <img src="logo.png" alt="Logo">
+    <button onclick="scrollToTop()">Inicio</button>
 </header>
 
 <section class="visible">
-<h2>LATIDOS</h2>
-<h2>¨ENTRE LÁGRIMAS Y RISAS¨</h2>
-<div class="hero-img"><img src="inicio.jpg"></div>
-<div class="box">Creamos experiencias únicas que emocionan y sorprenden.</div>
+    <h2>LATIDOS</h2>
+    <h2>¨ENTRE LÁGRIMAS Y RISAS¨</h2>
+
+    <div class="hero-img">
+        <img src="inicio.jpg" alt="Imagen principal">
+    </div>
+
+    <div class="box">
+        Creamos experiencias únicas que emocionan y sorprenden en cada ocasión especial.
+    </div>
 </section>
 
 <section>
-<h2>Acerca de Nosotros</h2>
-<div class="box">Regalamos sonrisas y emociones reales.</div>
+    <h2>Acerca de Nosotros</h2>
+    <div class="box">
+        Somos un pequeño emprendimiento que te ofrece la oportunidad de regalar sonrisas.
+    </div>
 </section>
 
 <section>
-<h2>Personajes Disponibles</h2>
-<div class="slider">
-<img src="personaje1.jpg" class="active">
-<img src="personaje2.jpg">
-<img src="personaje3.jpg">
-</div>
+    <h2>Personajes Disponibles</h2>
+    <div class="slider">
+        <img src="personaje1.jpg" class="active">
+        <img src="personaje2.jpg">
+        <img src="personaje3.jpg">
+    </div>
+</section>
+
+<!-- AGREGADO -->
+<section>
+    <h2>Decoración de Cumpleaños</h2>
+    <div class="box">
+        Decoración temática, globos y ambientación personalizada.
+        <br>
+        <a class="more-btn" href="decoracion.html">Ver más</a>
+    </div>
 </section>
 
 <section>
-<h2>Decoración de Cumpleaños</h2>
-<div class="box">
-Decoración temática, globos, ambientación y detalles únicos.
-<br>
-<a class="more-btn" href="decoracion.html">Ver más</a>
-</div>
+    <h2>Galería de Experiencias</h2>
+    <div class="box">
+        Momentos diseñados para impactar emocionalmente.
+        <br>
+        <a class="more-btn" href="https://bio.site/latidosge">Ver más</a>
+    </div>
 </section>
-
-<section>
-<h2>Galería de Experiencias</h2>
-<div class="box">
-Momentos diseñados para impactar emocionalmente.
-<br>
-<a class="more-btn" href="https://bio.site/latidosge">Ver más</a>
-</div>
-</section>
-
-<div class="final">
-<p>Gracias por confiar en nosotros</p>
-<a href="https://wa.me/5351533874">ME INTERESA</a>
-</div>
 
 <a class="whatsapp-float" href="https://wa.me/5351533874">💬</a>
 
-<img id="floating-gift" src="caja.png">
-
-<div id="modal">
-<div class="paper">
-<h3>🎁 Sorpresa</h3>
-<p>Gracias por visitar Latidos. ¡Hacemos magia con emociones!</p>
-<button onclick="modal.style.display='none'">Cerrar</button>
-</div>
-</div>
-
 <script>
 /* SLIDER */
-let i=0,s=document.querySelectorAll(".slider img");
-setInterval(()=>{s[i].classList.remove("active");i=(i+1)%s.length;s[i].classList.add("active")},5000);
-
-/* SCROLL */
-document.addEventListener("scroll",()=>{
-document.querySelectorAll("section").forEach(sec=>{
-let r=sec.getBoundingClientRect();
-if(r.top<innerHeight-120)sec.classList.add("visible");
-});
-});
-
-/* REGALO FLOTANTE */
-const g=document.getElementById("floating-gift"),modal=document.getElementById("modal");
-let x=100,y=100,dx=2,dy=2,rot=0;
+let slides=document.querySelectorAll(".slider img");
+let index=0;
 setInterval(()=>{
-x+=dx;y+=dy;rot+=3;
-if(x<0||x+70>innerWidth)dx*=-1;
-if(y<0||y+70>innerHeight)dy*=-1;
-g.style.transform=`translate(${x}px,${y}px) rotate(${rot}deg)`
-},16);
-g.onclick=()=>modal.style.display="flex";
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+},5000);
+
+/* SCROLL SECCIONES */
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        const r=sec.getBoundingClientRect();
+        sec.classList.toggle("visible", r.top < innerHeight-100 && r.bottom > 100);
+    });
+});
+
+/* REGALOS + CONFETI */
+const giftContainer=document.getElementById("gift-container");
+const giftImg="caja.png";
+let giftInterval=null, active=true;
+
+function rnd(a,b){return Math.random()*(b-a)+a;}
+
+function createGift(){
+    if(!active) return;
+    const g=document.createElement("img");
+    g.src=giftImg;
+    g.className="gift";
+    const s=rnd(20,90), d=rnd(6,14);
+    g.style.width=s+"px";
+    g.style.left=rnd(0,innerWidth-s)+"px";
+    g.style.animationDuration=d+"s";
+    g.style.setProperty("--rs",rnd(-40,40)+"deg");
+    g.style.setProperty("--re",rnd(180,720)+"deg");
+    giftContainer.appendChild(g);
+    setTimeout(()=>g.remove(),d*1000);
+}
+
+/* CONFETI */
+function createConfetti(){
+    if(!active) return;
+    const c=document.createElement("div");
+    c.className="confetti";
+    const colors=["#ff4d6d","#ffd166","#06d6a0","#4dabf7","#c77dff","#f77f00"];
+    const d=rnd(5,10);
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.width=rnd(6,12)+"px";
+    c.style.height=rnd(10,18)+"px";
+    c.style.left=rnd(0,innerWidth)+"px";
+    c.style.animationDuration=d+"s";
+    c.style.setProperty("--rs",rnd(-180,180)+"deg");
+    c.style.setProperty("--re",rnd(360,1080)+"deg");
+    giftContainer.appendChild(c);
+    setTimeout(()=>c.remove(),d*1000);
+}
+
+function startGifts(){
+    if(giftInterval) return;
+    giftInterval=setInterval(()=>{
+        for(let i=0;i<rnd(1,4);i++) createGift();
+        for(let i=0;i<rnd(2,6);i++) createConfetti();
+    },rnd(600,900));
+}
+
+function stopGifts(){
+    clearInterval(giftInterval);
+    giftInterval=null;
+}
+
+window.addEventListener("scroll",()=>{
+    const lim=innerHeight*0.6;
+    const y=scrollY;
+    if(y>lim){
+        giftContainer.style.opacity=0;
+        active=false;
+        stopGifts();
+    }else{
+        giftContainer.style.opacity=(1-y/lim).toFixed(2);
+        active=true;
+        startGifts();
+    }
+});
+
+startGifts();
+
+function scrollToTop(){
+    scrollTo({top:0,behavior:"smooth"});
+}
 </script>
 
 </body>
