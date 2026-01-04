@@ -387,7 +387,7 @@ function createGift(){
     const g=document.createElement("img");
     g.src=giftImg;
     g.className="gift";
-    const s=rnd(15,25), d=rnd(7,15);
+    const s=rnd(20,25), d=rnd(7,15);
     g.style.width=s+"px";
     g.style.left=rnd(0,innerWidth-s)+"px";
     g.style.animationDuration=d+"s";
@@ -419,7 +419,7 @@ function startGifts(){
     if(giftInterval) return;
     giftInterval=setInterval(()=>{
         for(let i=0;i<rnd(1,2);i++) createGift();
-        for(let i=0;i<rnd(20,60);i++) createConfetti();
+        for(let i=0;i<rnd(2,6);i++) createConfetti();
     },rnd(1000,1500));
 }
 
