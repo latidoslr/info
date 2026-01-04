@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Latidos ¨ENTRE LÁGRIMAS Y RISAS¨</title>
-
-<!-- AGREGADO: FAVICON -->
+    
+    <!-- AGREGADO: FAVICON -->
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
@@ -37,8 +37,7 @@ body{
     animation:fall linear forwards;
     will-change:transform,opacity;
 }
-
-/* AGREGADO: CONFETI */
+    /* AGREGADO: CONFETI */
 .confetti{
     position:absolute;
     top:-40px;
@@ -91,8 +90,8 @@ section{
     margin:auto;
     padding:120px 25px 80px;
     border-bottom:1px solid rgba(255,255,255,.1);
-    opacity:0;
-    transform:translateY(40px);
+    opacity:1;
+    transform:translateY(0px);
     transition:all .8s ease;
 }
 
@@ -194,6 +193,44 @@ h2{
 .final-content{position:relative;z-index:1;}
 </style>
 </head>
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:3px;
+    margin-bottom:25px;
+}
+
+.socials a{
+    background:#1e1e1e;
+    color:#000;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.final a{
+    display:inline-block;
+    margin-top:25px;
+    background:#1e1e1e;
+    color:#fff;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.footer-info{
+    margin-top:35px;
+    font-size:16px;
+}
+
+@media(max-width:768px){
+    h2{font-size:32px;}
+    .slider{height:580px;}
+}
+</style>
+</head>
 
 <body>
 
@@ -205,15 +242,14 @@ h2{
     <button onclick="scrollToTop()">Inicio</button>
 </header>
 
-<section class="visible">
+<section>
     <h2>LATIDOS</h2>
     <h2>¨ENTRE LÁGRIMAS Y RISAS¨</h2>
 
     <div class="hero-img">
         <img src="inicio.jpg" alt="Imagen principal">
     </div>
-
-    <div class="box">
+<div class="box">
         Creamos experiencias únicas que emocionan y sorprenden en cada ocasión especial.
     </div>
 </section>
@@ -221,7 +257,7 @@ h2{
 <section>
     <h2>Acerca de Nosotros</h2>
     <div class="box">
-        Somos un pequeño emprendimiento que te ofrece la oportunidad de regalar sonrisas.
+        Somos un pequeño emprendimiento que te ofrece la oportunidad de regalar sonrisas a tus seres queridos.
     </div>
 </section>
 
@@ -231,10 +267,12 @@ h2{
         <img src="personaje1.jpg" class="active">
         <img src="personaje2.jpg">
         <img src="personaje3.jpg">
+        <img src="personaje4.jpg">
+        <img src="personaje5.jpg">
+        <img src="personaje6.jpg">
     </div>
 </section>
-
-<!-- AGREGADO -->
+    
 <section>
     <h2>Decoración de Cumpleaños</h2>
     <div class="box">
@@ -245,13 +283,38 @@ h2{
 </section>
 
 <section>
-    <h2>Galería de Experiencias</h2>
+    <h2>Regalos</h2>
+    <div class="box">
+        Regalos personalizados, detalles especiales y presentaciones creativas.
+        <br>
+        <a class="more-btn" href="https://bio.site/latidos">Ver más</a>
+    </div>
+</section>
+
+<section>
+     <h2>Galería de Experiencias</h2>
     <div class="box">
         Momentos diseñados para impactar emocionalmente.
         <br>
         <a class="more-btn" href="https://bio.site/latidosge">Ver más</a>
     </div>
 </section>
+
+<div class="final">
+    <div class="final-content">
+        <div class="socials">
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p>Gracias por confiar en nosotros. Será un placer atenderle.</p>
+        <a href="https://wa.me/5351533874?text=ESTOY%20INTERESADO(A)%20EN%20SUS%20SERVICIOS">ME INTERESA</a>
+        <div class="footer-info">
+            <p>📍 JIGUANÍ-GRANMA</p>
+            <p>📞 Teléfonos: +53 51533874</p>
+        </div>
+    </div>
+</div>
 
 <a class="whatsapp-float" href="https://wa.me/5351533874">💬</a>
 
