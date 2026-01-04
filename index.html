@@ -73,6 +73,21 @@ header{
     z-index:1000;
     box-shadow:0 3px 10px rgba(0, 0, 0, 0.45);
 }
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#DEE3EEFA;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 25px;
+    z-index:1000;
+    box-shadow:0 3px 10px rgba(0, 0, 0, 0.45);
+}
 
 header img{height:48px;}
 
@@ -89,11 +104,11 @@ header button{
 section{
     max-width:1100px;
     margin:auto;
-    padding:120px 25px 80px;
+    padding:100px 10px 60px;
     border-bottom:1px solid rgba(255,255,255,.1);
     opacity:0;
-    transform:translateY(40px);
-    transition:all .8s ease;
+    transform:translateY(50px);
+    transition:all .9s ease;
 }
 
 section.visible{
@@ -103,8 +118,15 @@ section.visible{
 
 h2{
     text-align:center;
-    margin-bottom:25px;
-    font-size:30px;
+    margin-bottom:15px;
+    font-size:25px;
+}  
+
+h3{
+    text-align:center;
+    margin-bottom:15px;
+    font-family:"Times New Roman Bold Italic
+    font-size:25px;
 }
 
 .box{
@@ -113,6 +135,7 @@ h2{
     border-radius:12px;
     box-shadow:0 5px 20px rgba(55, 55, 54, 0.68);
     text-align:center;
+    font-size:20px;
 }
 
 /* IMAGEN INICIO */
@@ -188,7 +211,7 @@ h2{
     left:0;
     width:100%;
     height:750px;
-    background:linear-gradient(to bottom, rgba(238,219,219,0), #d78dba);
+    background:linear-gradient(to bottom, rgba(238,219,219,0), #d55ca6);
 }
 
 .final-content{position:relative;z-index:1;}
@@ -243,8 +266,8 @@ h2{
 </header>
 
 <section>
-    <h2>LATIDOS</h2>
-    <h2>¨ENTRE LÁGRIMAS Y RISAS¨</h2>
+    <h2>L A T I D O S</h2>
+    <h3>¨ENTRE LÁGRIMAS Y RISAS¨</h3>
 
     <div class="hero-img">
         <img src="inicio.jpg" alt="Imagen principal">
@@ -271,12 +294,14 @@ h2{
         <img src="personaje5.jpg">
         <img src="personaje6.jpg">
     </div>
+     <div class="box">
+          Contamos con una amplia variedad de personajes caracterizados, ideales para cumpleaños, celebraciones infantiles y eventos especiales. Cada presentación se realiza con profesionalidad, puntualidad y una puesta en escena diseñada para sorprender y entretener.
 </section>
-    
+
 <section>
     <h2>Decoración de Cumpleaños</h2>
     <div class="box">
-        Decoración temática, globos y ambientación personalizada.
+       Diseñamos y realizamos decoraciones personalizadas que convierten cada ocasión especial en un momento único. Nuestro objetivo es crear experiencias que transmitan emoción, alegría y cercanía, cuidando cada detalle desde la planificación hasta la entrega final.
         <br>
         <a class="more-btn" href="decoracion.html">Ver más</a>
     </div>
@@ -285,7 +310,7 @@ h2{
 <section>
     <h2>Regalos</h2>
     <div class="box">
-        Regalos personalizados, detalles especiales y presentaciones creativas.
+    Ofrecemos una selección de regalos personalizados y detalles especiales, diseñados para transmitir sentimientos y emociones de forma auténtica. Cada obsequio es preparado con dedicación, garantizando calidad, presentación cuidada y un impacto positivo en quien lo recibe.
         <br>
         <a class="more-btn" href="https://bio.site/latidos">Ver más</a>
     </div>
@@ -294,9 +319,17 @@ h2{
 <section>
     <h2>Galería de Experiencias</h2>
     <div class="box">
-        Momentos diseñados para impactar emocionalmente y sorprender.
+        Creamos experiencias que van más allá de un simple regalo. Cada servicio está pensado para generar momentos significativos, combinando creatividad, planificación y una ejecución profesional  que deja recuerdos duraderos en cada celebración.
         <br>
         <a class="more-btn" href="https://bio.site/latidosge">Ver más</a>
+    </div>
+</section>
+
+<section>
+    <h2>Metodos de pago</h2>
+    <div class="box">
+        <img src="efectivo.png" alt="Logo">   <img src="transferencia.png" alt="Logo">   <img src="visa.png" alt="Logo">   <img src="mastercard.png" alt="Logo">
+        <br>
     </div>
 </section>
 
@@ -312,6 +345,7 @@ h2{
         <div class="footer-info">
             <p>📍 JIGUANÍ-GRANMA</p>
             <p>📞 Teléfonos: +53 51533874</p>
+         <p>Created by <img src="rey.png" alt="Logo">
         </div>
     </div>
 </div>
@@ -349,7 +383,7 @@ function createGift(){
     const g=document.createElement("img");
     g.src=giftImg;
     g.className="gift";
-    const s=rnd(20,30), d=rnd(6,14);
+    const s=rnd(15,25), d=rnd(7,15);
     g.style.width=s+"px";
     g.style.left=rnd(0,innerWidth-s)+"px";
     g.style.animationDuration=d+"s";
@@ -380,9 +414,9 @@ function createConfetti(){
 function startGifts(){
     if(giftInterval) return;
     giftInterval=setInterval(()=>{
-        for(let i=0;i<rnd(1,4);i++) createGift();
-        for(let i=0;i<rnd(2,6);i++) createConfetti();
-    },rnd(600,900));
+        for(let i=0;i<rnd(1,2);i++) createGift();
+        for(let i=0;i<rnd(20,60);i++) createConfetti();
+    },rnd(1000,1500));
 }
 
 function stopGifts(){
