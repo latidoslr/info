@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Latidos ¨ENTRE LÁGRIMAS Y RISAS¨</title>
+    
+<!-- AGREGADO: FAVICON -->
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 *{
@@ -33,6 +36,15 @@ body{
     opacity:0;
     animation:fall linear forwards;
     will-change:transform,opacity;
+}
+    
+/* AGREGADO: CONFETI */
+.confetti{
+    position:absolute;
+    top:-40px;
+    opacity:0;
+    animation:fall linear forwards;
+    border-radius:3px;
 }
 
 @keyframes fall{
@@ -260,6 +272,15 @@ h2{
         <img src="personaje6.jpg">
     </div>
 </section>
+    
+<section>
+    <h2>Decoración de Cumpleaños</h2>
+    <div class="box">
+        Decoración temática, globos y ambientación personalizada.
+        <br>
+        <a class="more-btn" href="decoracion.html">Ver más</a>
+    </div>
+</section>
 
 <section>
     <h2>Regalos</h2>
@@ -316,7 +337,7 @@ window.addEventListener("scroll",()=>{
     });
 });
 
-/* REGALOS ANIMADOS */
+/* REGALOS + CONFETI */
 const giftContainer=document.getElementById("gift-container");
 const giftImg="caja.png";
 let giftInterval=null, active=true;
@@ -328,22 +349,46 @@ function createGift(){
     const g=document.createElement("img");
     g.src=giftImg;
     g.className="gift";
-    const s=rnd(35,90), d=rnd(6,14);
+    const s=rnd(20,90), d=rnd(6,14);
     g.style.width=s+"px";
     g.style.left=rnd(0,innerWidth-s)+"px";
     g.style.animationDuration=d+"s";
-    g.style.setProperty("--rs",Math.random()>.5?rnd(-40,40)+"deg":"0deg");
-    g.style.setProperty("--re",Math.random()>.5?rnd(180,720)+"deg":g.style.getPropertyValue("--rs"));
+    g.style.setProperty("--rs",rnd(-40,40)+"deg");
+    g.style.setProperty("--re",rnd(180,720)+"deg");
     giftContainer.appendChild(g);
     setTimeout(()=>g.remove(),d*1000);
 }
 
-function startGifts(){
-    if(giftInterval) return;
-    giftInterval=setInterval(()=>{for(let i=0;i<rnd(1,4);i++)createGift();},rnd(600,900));
+/* CONFETI */
+function createConfetti(){
+    if(!active) return;
+    const c=document.createElement("div");
+    c.className="confetti";
+    const colors=["#ff4d6d","#ffd166","#06d6a0","#4dabf7","#c77dff","#f77f00"];
+    const d=rnd(5,10);
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.width=rnd(6,12)+"px";
+    c.style.height=rnd(10,18)+"px";
+    c.style.left=rnd(0,innerWidth)+"px";
+    c.style.animationDuration=d+"s";
+    c.style.setProperty("--rs",rnd(-180,180)+"deg");
+    c.style.setProperty("--re",rnd(360,1080)+"deg");
+    giftContainer.appendChild(c);
+    setTimeout(()=>c.remove(),d*1000);
 }
 
-function stopGifts(){clearInterval(giftInterval);giftInterval=null;}
+function startGifts(){
+    if(giftInterval) return;
+    giftInterval=setInterval(()=>{
+        for(let i=0;i<rnd(1,4);i++) createGift();
+        for(let i=0;i<rnd(2,6);i++) createConfetti();
+    },rnd(600,900));
+}
+
+function stopGifts(){
+    clearInterval(giftInterval);
+    giftInterval=null;
+}
 
 window.addEventListener("scroll",()=>{
     const lim=innerHeight*0.6;
